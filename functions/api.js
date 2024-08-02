@@ -1,20 +1,29 @@
 const express = require('express');
 const serverless = require('serverless-http');
 const app = express();
+const cors = require('cors');
 const router = express.Router();
 const sendEmail = require('./mail_service');
 
-router.post('/send_email', async (req, res) => {
-    // const { to, subject, text, html } = req.body;
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://www.xphyrehealth.com']
+}));
 
+
+
+
+router.post('/send_email', async (req, res) => {
+    const data = req.body;
     try {
-        await sendEmail();
+        await sendEmail(data);
         res.status(200).send('Email sent successfully');
+        
     } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).send('Error sending email');
     }
 });
+
 
 
 const PORT = process.env.PORT || 3000;

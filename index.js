@@ -1,8 +1,14 @@
 const express = require('express');
 const serverless = require('serverless-http');
+const cors = require('cors'); // Import the cors package
 const app = express();
 const router = express.Router();
 const sendEmail = require('./functions/mail_service');
+
+app.use(cors({
+    origin: ['http://localhost:3000', 'https://www.xphyrehealth.com']
+}));
+
 
 // Middleware to parse JSON bodies
 app.use(express.json());
@@ -24,7 +30,7 @@ router.post('/send_email', async (req, res) => {
 app.use('/api', router);
 
 // Server setup
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });

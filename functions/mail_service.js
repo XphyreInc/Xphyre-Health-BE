@@ -12,8 +12,6 @@ const transporter = nodemailer.createTransport({
 });
 
 const sendEmail = (data) => {
-    const dataString = JSON.stringify(data, null, 2);
-
     const htmlTemplate = `
     <!DOCTYPE html>
     <html lang="en">

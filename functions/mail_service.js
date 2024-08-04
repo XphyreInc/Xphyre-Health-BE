@@ -5,13 +5,14 @@ const transporter = nodemailer.createTransport({
     secure: true,
     port: 465,
     auth: {
-        user: 'muhammad.anoosh@xphyre.com',
-        pass: '@noosh1134'
+        user: 'web.development@xphyre.com',
+        pass: '@noosh1122'
     },
     tls: { rejectUnauthorized: false },
 });
 
 const sendEmail = (data) => {
+  console.log(data);
     const htmlTemplate = `
     <!DOCTYPE html>
     <html lang="en">
@@ -37,7 +38,7 @@ const sendEmail = (data) => {
           <div><strong>State:</strong> ${data.state}</div>
           <div><strong>Monthly Collections:</strong> ${data.monthlyCollections}</div>
         </div>
-        <p>Thank you for providing your information. If you have any questions, feel free to contact us.</p>
+        <p>Contact the client as soon as possible</p>
       </div>
     </body>
     </html>
@@ -45,8 +46,8 @@ const sendEmail = (data) => {
 
     // Set up mail options
     const mailOptions = {
-        from: 'muhammad.anoosh@xphyre.com',
-        to: 'muhammad.anoosh@xphyre.com',
+        from: 'web.development@xphyre.com',
+        to: 'info@xphyre.com',
         subject: 'Appointment',
         html: htmlTemplate
     };

@@ -6,18 +6,17 @@ const router = express.Router();
 const sendEmail = require('./mail_service');
 
 app.use(cors({
-    origin: ['http://localhost:3000', 'https://www.xphyrehealth.com']
+    origin: ['http://localhost:3000', 'https://www.xphyrehealth.com', 'https://xphyrehealth.com']
 }));
 
 
-
+app.use(express.json());
 
 router.post('/send_email', async (req, res) => {
     const data = req.body;
     try {
         await sendEmail(data);
         res.status(200).send('Email sent successfully');
-        
     } catch (error) {
         console.error('Error sending email:', error);
         res.status(500).send('Error sending email');

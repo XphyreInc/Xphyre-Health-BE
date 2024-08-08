@@ -51,7 +51,7 @@ const sendEmail = (data) => {
     // Set up mail options
     const mailOptions = {
         from: 'web.development@xphyre.com',
-        to: 'kashif.ijaz@xphyre.com',
+        to: 'muhammad.anoosh@xphyre.com',
         subject: 'Appointment',
         html: htmlTemplate
     };

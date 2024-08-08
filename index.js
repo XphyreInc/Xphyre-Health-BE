@@ -3,7 +3,7 @@ const serverless = require('serverless-http');
 const cors = require('cors'); // Import the cors package
 const app = express();
 const router = express.Router();
-const sendEmail = require('./functions/mail_service');
+const sendEmail = require('./testMailService');
 
 app.use(cors({
     origin: ['http://localhost:3000', 'https://www.xphyrehealth.com']
@@ -15,8 +15,8 @@ app.use(express.json());
 
 // Route for sending email
 router.post('/send_email', async (req, res) => {
+    
     const data = req.body;
-    console.log(data);
     try {
         await sendEmail(data);
         res.status(200).send('Email sent successfully');
